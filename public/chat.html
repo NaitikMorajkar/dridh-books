@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Chat with the Dridh Books reading assistant.">
+  <title>Dridh Books | Voice assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=pointer3d2">
+  <link rel="stylesheet" href="motion.css">
+  <script>try{if(localStorage.getItem('dridhLiteMode')!=='true'&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('m-on');if(sessionStorage.getItem('dridhIntro'))document.documentElement.classList.add('m-fast')}}catch(e){}</script>
+</head>
+<body class="chat-page">
+  <header class="app-header">
+    <a aria-label='Dridh Books home' class='brand-link' href='/'><span class="brand-wordmark">DRIDH <b>BOOKS</b></span><span class="voice-badge">VOICE 3D</span><small>One minute. One story. One step stronger.</small></a>
+    <nav class="top-nav" aria-label="Main navigation"><a class='active' href='/chat?v=final2'>Assistant</a><a href='/chat?v=final2#books-section' title='Open the book shelf'>Books</a><a href='/sankalp'>Sankalp</a><a href='/saved'>Saved books</a></nav>
+    <div class="header-actions"><a class='streak-chip' href='/sankalp' id='streak-chip' style='text-decoration:none'><i></i> <span id="streak-text">0-DAY STREAK</span></a><span class="profile-chip" id="profile-badge">Guest mode</span><button class="text-button" id="logout-button" type="button">Logout ↗</button></div>
+  </header>
+  <nav class="mobile-nav" aria-label="Mobile navigation"><a class='active' href='/chat?v=final2'>Assistant</a><a href='/chat?v=final2#books-section'>Books</a><a href='/sankalp'>Sankalp</a><a href='/saved'>Saved books</a></nav>
+  <main class="assistant-page">
+    <div class="nebula nebula-left" aria-hidden="true"></div><div class="nebula nebula-right" aria-hidden="true"></div>
+    <section class="assistant-hero" aria-label="Dridh voice assistant">
+      <div class="assistant-kicker"><span class="status-dot"></span> VOICE ASSISTANT <b>•</b> TYPE OR SPEAK</div>
+      <div class="orb-mode-bar" aria-label="Assistant state"><span class="mode active">◒ Idle</span><span class="mode">♩ Listening</span><span class="mode">⟳ Thinking</span><span class="mode">◉ Speaking</span></div>
+      <div class="hero-orb-wrap"><div class="orb-halo halo-one"></div><div class="orb-halo halo-two"></div><div class="assistant-orb" id="assistant-orb" aria-label="Assistant status: ready"><span class="orb-shimmer"></span><span class="orb-core">∞</span><span class="orb-ring ring-one"></span><span class="orb-ring ring-two"></span><span class="orb-spectrum"><i></i><i></i><i></i><i></i></span></div></div>
+      <div class="assistant-greeting"><h1>Hey <span id="greeting-name">there</span>. I’m <em>Dridh.</em></h1><p id="welcome-copy">Tell me what you’re going through, or tell me what you want to learn right now.</p></div>
+      <div class="voice-control-bar"><span class="voice-api"><i></i><span id="orb-status">WEB SPEECH API READY</span></span><button class="voice-button mic-button" id="mic-button" type="button" aria-label="Use voice input"><span>♩</span> <b>Speak to Dridh</b></button><button class="mute-button" id="mute-button" type="button" aria-pressed="false" title="Mute assistant voice">◖</button></div>
+      <p class="voice-status" id="voice-status">Type a message or tap the mic.</p>
+    </section>
+    <section class="prompt-section" aria-label="Quick prompts"><span class="prompt-label">QUICK PROMPTS:</span><button class="choice-button cyan" data-category="Motivation" type="button">Motivation <small>“I feel stuck”</small></button><button class="choice-button coral" data-category="Exam stress" type="button">Exam stress <small>“Scared of my exam”</small></button><button class="choice-button teal" data-category="Physics" type="button">Physics <small>“Understand physics”</small></button><button class="choice-button violet" data-category="Maths" type="button">Maths <small>“I hate maths”</small></button><button class="choice-button white" data-category="Career" type="button">Career <small>“What should I choose?”</small></button><button class="choice-button amber" data-category="Biography" type="button">Biography <small>“A successful person”</small></button></section>
+    <section class="books-section" id="books-section" aria-live="polite" hidden><div class="books-heading"><div><span class="section-kicker">OPEN LIBRARY LIVE SHELF</span><h2 id="books-title">Your next small spark</h2><p id="books-subtitle">Curated suggestions are checked against Wikipedia before they appear.</p></div><span class="source-badge">PUBLIC SOURCES</span></div><div class="book-grid" id="book-grid"></div><div class="book-actions"><button class="mini-action" id="another-category" type="button">↻ Another category</button><button class="mini-action" id="another-book" type="button">⌁ Another book</button><button class="mini-action" id="done-button" type="button">✓ Done</button></div></section>
+    <section class="thread-section"><div class="thread-heading"><h2>Conversation</h2><button class="text-button" type="button" onclick="window.location.reload()">↻ Reset session</button></div><div class="thread-card" id="conversation" aria-live="polite"><article class="message assistant-message"><span class="message-label">◉ DRIDH ASSISTANT</span><p id="greeting-message">Hi there. I’m Dridh — a little reading room for busy days. What would you like to read into?</p></article></div><form class="chat-input-row" id="chat-form"><label class="sr-only" for="chat-input">Say what you want to read</label><span class="input-mic" aria-hidden="true">♩</span><input id="chat-input" type="text" placeholder="Tell Dridh how you feel or what you need to master today…" autocomplete="off"><button class="send-button" type="submit" aria-label="Send message">➤</button></form></section>
+    <footer class="chat-footer"><span class="brand-wordmark">DRIDH <b>BOOKS</b><small>One-minute stories for busy students.</small></span><span class="footer-ready"><i></i> SOURCES: WIKIPEDIA · OPEN LIBRARY</span><span>© 2026 DRIDH BOOKS</span></footer>
+  </main>
+  <script src="profile.js"></script>
+  <script src="authors.js"></script>
+  <script src="books.js"></script>
+  <script src="chat.js?v=final2"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.128.0/three.min.js"></script>
+  <script src="fx3d.js"></script>
+  <script src="cursor.js"></script>
+  <script src="motion.js"></script>
+</body>
+</html>

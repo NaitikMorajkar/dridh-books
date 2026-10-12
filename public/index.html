@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dridh Books — one-minute stories for busy students.">
+  <title>Dridh Books | Spatial reading sanctum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=pointer3d2">
+  <link rel="stylesheet" href="motion.css">
+  <script>try{if(localStorage.getItem('dridhLiteMode')!=='true'&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('m-on');if(sessionStorage.getItem('dridhIntro'))document.documentElement.classList.add('m-fast')}}catch(e){}</script>
+</head>
+<body class="login-page">
+  <header class="app-header login-app-header"><a aria-label='Dridh Books home' class='brand-link' href='/'><span class="brand-wordmark">DRIDH <b>BOOKS</b></span><span class="voice-badge">COSMIC LUMINARY</span><small>One minute. One story. One step stronger.</small></a><nav class="top-nav" aria-label="Main navigation"><a class='active' href='/'>Assistant</a><a href='/chat?v=final2#books-section'>Books</a><a href='/sankalp'>Sankalp</a><a href='/saved'>Saved books</a></nav><div class="header-actions"><span class="profile-chip">Guest mode</span></div></header>
+  <nav class="mobile-nav" aria-label="Mobile navigation"><a class='active' href='/'>Assistant</a><a href='/chat?v=final2#books-section'>Books</a><a href='/sankalp'>Sankalp</a><a href='/saved'>Saved books</a></nav>
+  <main class="login-sanctum">
+    <div class="nebula nebula-left" aria-hidden="true"></div><div class="nebula nebula-right" aria-hidden="true"></div>
+    <header class="sanctum-header">
+      <span class="status-pill"><span class="status-dot"></span> SPATIAL READING SANCTUM</span>
+      <h1>DRIDH <span>BOOKS</span></h1>
+      <p>One minute. One story. One step stronger.</p>
+    </header>
+    <div class="feature-ticker"><span>⚡ 60-SECOND MICRO-STORIES</span><b>•</b><span>♩ VOICE ASSISTANT</span><b>•</b><span>✦ SANKALP DAILY STREAKS</span></div>
+    <section class="login-showcase" aria-label="3D floating book showcase">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="science-glyph glyph-pi">π</div><div class="science-glyph glyph-energy">E=mc²</div><div class="science-glyph glyph-infinity">∞</div><div class="science-glyph glyph-star">★</div>
+      <div class="book-stage" aria-hidden="true"><div class="book-shadow"></div><div class="book-shape"><div class="book-spine"></div><div class="book-cover"><span class="book-volume">VOL. 01</span><div class="book-title"><strong>दृढ़ संकल्प</strong><small>UNBREAKABLE WILL</small></div><span class="book-time">60 SEC <i></i></span></div></div></div>
+      <p class="drag-hint">HOVER OR DRAG BOOK TO ORBIT PERSPECTIVE</p>
+    </section>
+    <section class="login-card" aria-label="Create a local reading profile">
+      <div class="card-glow" aria-hidden="true"></div>
+      <div class="card-heading"><span class="card-kicker">YOUR READING SANCTUM</span><h2>Enter your<br><em>reading alias.</em></h2><p>Only your nickname is needed to make this space feel like yours.</p></div>
+      <form id="profile-form" novalidate>
+        <label for="nickname">Reader alias <span class="required">REQUIRED</span></label>
+        <div class="field-wrap"><span class="field-icon" aria-hidden="true">♙</span><input id="nickname" name="nickname" type="text" maxlength="30" autocomplete="nickname" placeholder="e.g. Aryan or Priya" required></div>
+        <label for="passcode">Passcode <span class="optional">OPTIONAL</span></label>
+        <div class="field-wrap"><span class="field-icon" aria-hidden="true">⌑</span><input id="passcode" name="passcode" type="password" autocomplete="new-password" placeholder="Optional - protects your nickname on this device"></div>
+        <p class="field-hint">Your nickname and saved items stay in this browser. An optional passcode is saved only as a one-way hash, never as plain text. This is demo-level protection, not a real account.</p>
+        <button class="button button-primary" type="submit">Login / Create profile <span aria-hidden="true">→</span></button>
+        <button class="button button-ghost" id="guest-button" type="button"><span aria-hidden="true">✧</span> Continue as guest</button>
+        <p class="form-message" id="form-message" role="alert" aria-live="polite"></p>
+      </form>
+      <div class="privacy-note"><span class="shield" aria-hidden="true">◇</span><span>No trackers and no accounts. Your profile stays in this browser.</span></div>
+    </section>
+    <footer class="sanctum-footer"><span><i></i> SOURCES: WIKIPEDIA · OPEN LIBRARY · GOOGLE BOOKS</span><span>COSMIC LUMINARY</span></footer>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.128.0/three.min.js"></script>
+  <script src="scene.js"></script>
+  <script src="profile.js"></script>
+  <script src="auth.js"></script>
+  <script src="fx3d.js"></script>
+  <script src="cursor.js"></script>
+  <script src="motion.js"></script>
+</body>
+</html>

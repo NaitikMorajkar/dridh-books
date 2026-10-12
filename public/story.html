@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dridh Books author and book story cards.">
+  <title>Dridh Books | Story room</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=pointer3d2">
+  <link rel="stylesheet" href="motion.css">
+  <script>try{if(localStorage.getItem('dridhLiteMode')!=='true'&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('m-on');if(sessionStorage.getItem('dridhIntro'))document.documentElement.classList.add('m-fast')}}catch(e){}</script>
+</head>
+<body class="story-page">
+  <header class="app-header">
+    <a aria-label='Back to Dridh Books' class='brand-link' href='/chat'><span class="brand-wordmark">DRIDH <b>BOOKS</b></span><span class="voice-badge">STORY ROOM</span><small>One minute. One story. One step stronger.</small></a>
+    <nav class="top-nav" aria-label="Main navigation"><a href='/chat?v=final2'>Assistant</a><a class='active' href='/chat?v=final2#books-section'>Books</a><a href='/sankalp'>Sankalp</a><a href='/saved'>Saved books</a></nav>
+    <div class="header-actions"><span class="profile-chip" id="profile-badge">Guest mode</span><button class="text-button" id="back-button" type="button">← Back</button></div>
+  </header>
+  <nav class="mobile-nav" aria-label="Mobile navigation"><a href='/chat?v=final2'>Assistant</a><a class='active' href='/chat?v=final2#books-section'>Books</a><a href='/sankalp'>Sankalp</a><a href='/saved'>Saved books</a></nav>
+  <main class="story-shell">
+    <div class="nebula nebula-left" aria-hidden="true"></div><div class="nebula nebula-right" aria-hidden="true"></div>
+    <div class="story-toolbar"><span class="status-pill"><span class="status-dot"></span> VERIFIED PUBLIC SOURCES</span><button class="download-pdf-button" id="download-pdf" type="button">▣ Download story pack (PDF)</button></div>
+    <section class="author-spotlight" id="author-spotlight" aria-labelledby="author-heading"><div class="author-photo-wrap"><div class="author-photo-fallback" id="author-avatar" aria-hidden="true"></div><img id="author-photo" alt="" hidden></div><div class="author-copy"><span class="section-kicker">MEET THE AUTHOR</span><h1 id="author-heading">Loading author…</h1><p class="author-years" id="author-years">Birth and death years are being checked…</p><p class="author-description" id="author-description">Fetching the author’s public Wikipedia summary.</p><small class="source-credit">Source: Wikipedia</small></div></section>
+    <section class="story-heading-block"><span class="section-kicker" id="category-label">60-SECOND STORY ROOM</span><h2 id="book-heading">Loading book…</h2><p id="story-subtitle">Six author cards, then a five-card book story.</p></section>
+    <section class="story-tabs" aria-label="Story type tabs"><button class="story-tab active" id="author-tab" type="button">Author's story <span>6 cards</span></button><button class="story-tab" id="book-tab" type="button" hidden>Book story <span>5 cards</span></button></section>
+    <section class="story-panel" id="author-story" aria-label="Author's story"><div class="story-progress-row" id="author-progress-row"><span id="author-progress-label">CARD 1 OF 6</span><div class="story-progress"><i id="author-progress-bar"></i></div><span id="author-card-title">The opening</span></div><article class="story-card-large" id="author-card"><span class="card-number">01</span><h3>Loading story card…</h3><p>Fetching the author’s full Wikipedia article.</p><span class="card-source">Wikipedia full article</span></article><div class="story-controls" id="author-controls"><button class="story-control" id="author-back" type="button">← Back</button><button class="story-control read-control" id="read-author-card" type="button">♩ Read aloud</button><button class="story-control primary" id="author-next" type="button">Next →</button></div><div class="story-empty" id="author-error" hidden><h3>That author story is not available yet.</h3><p>Wikipedia did not return enough reliable text for six cards. No unsourced story is shown.</p><button class="story-control primary" id="pick-another-book" type="button">Pick another book</button></div></section>
+    <section class="story-panel" id="book-story" aria-label="Book story" hidden><div class="story-progress-row"><span id="book-progress-label">CARD 1 OF 5</span><div class="story-progress book-progress"><i id="book-progress-bar"></i></div><span id="book-card-title">What it is about</span></div><article class="story-card-large book-story-card" id="book-card"><span class="card-number">01</span><h3>Loading book summary…</h3><p>Checking Google Books, Open Library, and the book’s Wikipedia page.</p><span class="card-source">Public descriptions</span></article><div class="story-controls"><button class="story-control" id="book-back" type="button">← Back</button><button class="story-control primary" id="book-next" type="button">Next →</button></div><p class="summary-note">Summary based on public descriptions.</p></section>
+    <section class="preview-section" id="preview-section" aria-label="Google Books preview" hidden><div class="preview-copy"><span class="section-kicker">READ THE BEGINNING</span><h2>Try the first pages.</h2><p id="preview-hook">Checking the public book description for a short hook.</p><small id="preview-credit" class="source-credit" hidden>Preview provided by Google Books</small></div><button class="preview-button" id="preview-button" type="button" hidden>Read the beginning (free preview)</button><div class="google-preview-frame" id="google-preview" hidden></div><p class="preview-message" id="preview-message" role="status" aria-live="polite"></p></section>
+    <section class="read-book-section" id="read-book" hidden><div><span class="section-kicker">READ THIS BOOK</span><h2 id="read-book-heading">Legal public-domain edition</h2><p id="read-book-copy">Checking Gutendex and Internet Archive for a legal edition.</p></div><div class="read-book-links"><a class="download-legal-button" id="download-legal" href="#" target="_blank" rel="noopener" hidden>Download EPUB/PDF ↗</a><a class="legal-secondary-link" id="borrow-link" href="#" target="_blank" rel="noopener">Borrow free (opens Open Library) ↗</a><a class="legal-secondary-link" id="library-link" href="#" target="_blank" rel="noopener">Find in a library ↗</a><a class="legal-secondary-link" id="buy-link" href="#" target="_blank" rel="noopener">Buy ↗</a></div></section>
+    <section class="action-section"><div><span class="section-kicker">TODAY'S SMALL ACTION</span><h2 id="action-heading">Take one small step.</h2><p id="action-copy">Your action step will appear after the book description is verified.</p></div><span class="action-mark">✦</span></section>
+    <p class="story-message" id="story-message" role="status" aria-live="polite"></p>
+    <footer class="chat-footer"><span class="brand-wordmark">DRIDH <b>BOOKS</b><small>Empowering focused minds through 60-second tactile wisdom odysseys.</small></span><span>Made with Dridh Books.</span><span>© 2026 DRIDH BOOKS</span></footer>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://www.google.com/books/jsapi.js"></script>
+  <script src="author.js"></script>
+  <script src="story.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.128.0/three.min.js"></script>
+  <script src="fx3d.js"></script>
+  <script src="cursor.js"></script>
+  <script src="motion.js"></script>
+</body>
+</html>

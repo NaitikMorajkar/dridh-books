@@ -1,0 +1,109 @@
+/* Dridh Books motion layer.
+   Everything here is gated on html.m-on, which is only set when motion is allowed
+   (no prefers-reduced-motion and Effects not switched off). Entrance effects use the
+   individual translate/scale/rotate properties so they stack with the existing 3D tilt
+   transforms instead of replacing them. */
+
+/* ---------- Page curtain: intro on load, wipe on leave ---------- */
+html.m-on body::before,
+html.m-on body::after{position:fixed;pointer-events:none;z-index:10000}
+html.m-on body::before{content:'';inset:0;background:
+  radial-gradient(circle at 50% 45%,rgba(0,242,254,.16),transparent 38%),
+  radial-gradient(circle at 70% 70%,rgba(121,40,202,.22),transparent 45%),#0b0d19;
+  clip-path:inset(0 0 0 0);animation:m-curtain-out .8s cubic-bezier(.77,0,.18,1) .55s both}
+html.m-on body::after{content:'DRIDH BOOKS';left:50%;top:50%;translate:-50% -50%;
+  font:700 clamp(28px,6vw,54px)/1 'Outfit',sans-serif;letter-spacing:.5em;white-space:nowrap;
+  background:linear-gradient(100deg,#e1e1f3 30%,#00f2fe 45%,#ffaa00 55%,#e1e1f3 70%) 0 0/300% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:m-word-in .55s cubic-bezier(.2,.8,.2,1) both,m-shine 1.2s linear both,m-word-out .45s ease .5s both}
+html.m-on.m-fast body::before{animation-delay:.05s;animation-duration:.6s}
+html.m-on.m-fast body::after{display:none}
+html.m-on.m-leaving body::before{animation:m-curtain-in .45s cubic-bezier(.77,0,.18,1) both}
+html.m-on.m-leaving body::after{display:none}
+@keyframes m-curtain-out{to{clip-path:inset(0 0 100% 0)}}
+@keyframes m-curtain-in{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes m-word-in{from{letter-spacing:1.2em;opacity:0;filter:blur(10px)}to{letter-spacing:.5em;opacity:1;filter:blur(0)}}
+@keyframes m-word-out{to{opacity:0;scale:1.15;filter:blur(6px)}}
+@keyframes m-shine{from{background-position:100% 0}to{background-position:0 0}}
+
+/* ---------- Scroll progress + header ---------- */
+.m-progress{position:fixed;left:0;top:0;height:2px;width:100%;z-index:9997;pointer-events:none;
+  transform-origin:0 50%;scale:var(--m-progress,0) 1;
+  background:linear-gradient(90deg,var(--cyan),var(--violet),var(--amber));box-shadow:0 0 12px var(--cyan)}
+html.m-on .app-header{transition:height .35s ease,box-shadow .35s ease,background .35s ease}
+html.m-on .app-header.m-scrolled{box-shadow:0 10px 40px -10px rgba(0,242,254,.25);background:rgba(11,13,25,.92)}
+html.m-on .brand-wordmark b{background:linear-gradient(90deg,var(--cyan),var(--amber),var(--cyan)) 0 0/200% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:m-flow 5s linear infinite}
+@keyframes m-flow{to{background-position:200% 0}}
+html.m-on .top-nav a,html.m-on .mobile-nav a{position:relative}
+html.m-on .top-nav a::after{content:'';position:absolute;left:12%;right:12%;bottom:2px;height:1px;
+  background:var(--cyan);box-shadow:0 0 8px var(--cyan);scale:0 1;transition:scale .35s cubic-bezier(.2,.8,.2,1)}
+html.m-on .top-nav a:hover::after,html.m-on .top-nav a.active::after{scale:1 1}
+
+/* ---------- Split headlines ---------- */
+m-word{display:inline-block;white-space:nowrap}
+m-char{display:inline-block}
+html.m-on .m-split m-char,html.m-on .m-split .m-unit{opacity:0;translate:0 .7em;rotate:x -80deg;filter:blur(8px);
+  transition:opacity .6s ease,translate .7s cubic-bezier(.2,.9,.25,1.2),rotate .7s cubic-bezier(.2,.9,.25,1),filter .6s ease;
+  transition-delay:calc(var(--m-d,0) * 1ms)}
+html.m-on .m-split .m-unit{display:inline-block}
+html.m-on .m-split.is-in m-char,html.m-on .m-split.is-in .m-unit{opacity:1;translate:0 0;rotate:x 0deg;filter:blur(0)}
+html.m-on .m-words m-word{opacity:0;translate:0 14px;filter:blur(4px);
+  transition:opacity .5s ease,translate .6s cubic-bezier(.2,.8,.2,1),filter .5s ease;transition-delay:calc(var(--m-d,0) * 1ms)}
+html.m-on .m-words.is-in m-word{opacity:1;translate:0 0;filter:blur(0)}
+
+/* ---------- Scroll reveal ---------- */
+html.m-on .m-reveal{opacity:0;translate:0 38px;scale:.97;filter:blur(6px);
+  transition:opacity .8s ease,translate .9s cubic-bezier(.2,.8,.2,1),scale .9s cubic-bezier(.2,.8,.2,1),filter .8s ease!important;
+  transition-delay:calc(var(--m-d,0) * 1ms)!important}
+html.m-on .m-reveal.m-from-left{translate:-46px 0}
+html.m-on .m-reveal.m-from-right{translate:46px 0}
+html.m-on .m-reveal.m-pop{translate:0 18px;scale:.85}
+html.m-on .m-reveal.is-in{opacity:1;translate:0 0;scale:1;filter:blur(0)}
+
+/* ---------- Live content entrances ---------- */
+html.m-on .m-msg-in{animation:m-msg-in .6s cubic-bezier(.2,.9,.25,1.15) both}
+html.m-on .user-message.m-msg-in{animation-name:m-msg-in-right}
+@keyframes m-msg-in{from{opacity:0;translate:-30px 12px;scale:.96;filter:blur(6px)}}
+@keyframes m-msg-in-right{from{opacity:0;translate:30px 12px;scale:.96;filter:blur(6px)}}
+html.m-on .m-stream m-word{animation:m-stream .45s ease both;animation-delay:calc(var(--m-d,0) * 1ms)}
+@keyframes m-stream{from{opacity:0;filter:blur(5px);translate:0 6px}}
+html.m-on .book-card{animation-name:m-deal;animation-duration:.8s;animation-timing-function:cubic-bezier(.2,.9,.25,1.1);
+  animation-delay:calc(var(--m-deal,0) * 1ms)}
+@keyframes m-deal{from{opacity:0;translate:0 60px;rotate:x 55deg;scale:.8;filter:blur(8px)}}
+html.m-on .saved-item{animation:m-deal .7s cubic-bezier(.2,.9,.25,1.1) both;animation-delay:calc(var(--m-deal,0) * 1ms)}
+html.m-on .m-flip{animation:m-flip .65s cubic-bezier(.2,.8,.2,1) both}
+@keyframes m-flip{from{opacity:0;rotate:y -24deg;translate:40px 0;filter:blur(6px)}}
+html.m-on .m-flip-back{animation:m-flip-back .65s cubic-bezier(.2,.8,.2,1) both}
+@keyframes m-flip-back{from{opacity:0;rotate:y 24deg;translate:-40px 0;filter:blur(6px)}}
+html.m-on .story-panel,html.m-on .book-grid{perspective:1200px}
+html.m-on .m-bump{animation:m-bump .6s cubic-bezier(.2,.9,.25,1.4)}
+@keyframes m-bump{40%{scale:1.12}}
+
+/* ---------- Ambient motion ---------- */
+html.m-on .nebula{translate:var(--m-px,0) var(--m-py,0);transition:translate 1.2s cubic-bezier(.2,.8,.2,1);
+  animation:m-breathe 9s ease-in-out infinite alternate}
+html.m-on .nebula-right{animation-delay:-4s}
+@keyframes m-breathe{to{scale:1.25;opacity:.62}}
+html.m-on .feature-ticker,html.m-on .section-kicker,html.m-on .card-kicker{position:relative}
+html.m-on .feature-ticker{overflow:hidden}
+html.m-on .feature-ticker::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(100deg,transparent 35%,rgba(0,242,254,.25) 50%,transparent 65%) -100% 0/50% 100% no-repeat;
+  animation:m-sweep 4.5s ease-in-out infinite}
+@keyframes m-sweep{0%,30%{background-position:-100% 0}80%,100%{background-position:300% 0}}
+html.m-on .action-mark{display:inline-block;animation:m-spin 12s linear infinite}
+@keyframes m-spin{to{rotate:360deg}}
+
+/* ---------- Pointer interactions ---------- */
+html.m-on .m-magnetic:not(.m-reveal){translate:var(--m-mx,0) var(--m-my,0);transition:translate .25s cubic-bezier(.2,.8,.2,1)}
+.m-shock{position:fixed;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;pointer-events:none;z-index:9996;
+  border:2px solid var(--m-c,#00f2fe);box-shadow:0 0 18px var(--m-c,#00f2fe),inset 0 0 10px var(--m-c,#00f2fe)}
+.m-bit{position:fixed;left:0;top:0;width:8px;height:12px;border-radius:2px;pointer-events:none;z-index:9996}
+
+@media (prefers-reduced-motion:reduce){.m-progress,.m-shock,.m-bit{display:none}}
+
+/* Gradient hero title: letters can't be split without breaking background-clip, so it wipes in as one piece. */
+html.m-on .sanctum-header h1{background-size:200% 100%;animation:m-flow 6s ease-in-out infinite alternate}
+html.m-on .m-reveal.m-title{clip-path:inset(0 100% 0 0);letter-spacing:.12em;translate:0 0;scale:1;
+  transition:clip-path 1.1s cubic-bezier(.77,0,.18,1),letter-spacing 1.3s cubic-bezier(.2,.8,.2,1),opacity .6s ease,filter .8s ease!important}
+html.m-on .m-reveal.m-title.is-in{clip-path:inset(0 -10% 0 0);letter-spacing:-.04em}

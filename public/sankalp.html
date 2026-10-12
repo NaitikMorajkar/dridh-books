@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dridh Books Sankalp one-small-step meter.">
+  <title>Dridh Books | Sankalp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=pointer3d2">
+  <link rel="stylesheet" href="motion.css">
+  <script>try{if(localStorage.getItem('dridhLiteMode')!=='true'&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('m-on');if(sessionStorage.getItem('dridhIntro'))document.documentElement.classList.add('m-fast')}}catch(e){}</script>
+</head>
+<body class="nav-page-body">
+  <header class="app-header"><a aria-label='Dridh Books home' class='brand-link' href='/chat?v=final2'><span class="brand-wordmark">DRIDH <b>BOOKS</b></span><span class="voice-badge">SANKALP</span><small>One minute. One story. One step stronger.</small></a><nav class="top-nav" aria-label="Main navigation"><a href='/chat?v=final2'>Assistant</a><a href='/chat?v=final2#books-section'>Books</a><a class='active' href='/sankalp'>Sankalp</a><a href='/saved'>Saved books</a></nav><div class="header-actions"><span class="profile-chip" id="profile-badge">Guest mode</span><a class='text-button nav-action-link' href='/chat?v=final2'>Back to Assistant</a></div></header>
+  <nav class="mobile-nav" aria-label="Mobile navigation"><a href='/chat?v=final2'>Assistant</a><a href='/chat?v=final2#books-section'>Books</a><a class='active' href='/sankalp'>Sankalp</a><a href='/saved'>Saved books</a></nav>
+  <main class="nav-page"><div class="nebula nebula-left" aria-hidden="true"></div><div class="nebula nebula-right" aria-hidden="true"></div><section class="nav-page-card" aria-labelledby="sankalp-title"><span class="section-kicker">ONE PERCENT MODE</span><h1 id="sankalp-title">One small step, held gently.</h1><p>Write one goal, choose one small daily step, and tick it each day. Progress is allowed to be small and still count. Your Sankalp is saved only in this browser.</p><form id="sankalp-form" class="nav-form"><label for="sankalp-goal">My goal</label><input id="sankalp-goal" maxlength="80" placeholder="Score well in my Physics exam" required><label for="sankalp-step">My small daily step</label><input id="sankalp-step" maxlength="80" placeholder="Read 10 pages or review 5 cards" required><label for="sankalp-date">Target date</label><input id="sankalp-date" type="date" required><button class="button button-primary" type="submit">Save my Sankalp →</button></form><div class="nav-progress" aria-live="polite"><span class="section-kicker">DAILY METER</span><div class="meter-track"><i id="sankalp-meter"></i></div><p id="sankalp-status">Set your goal above to begin. 1% mode: do just one small thing today.</p><div class="sankalp-stats"><span id="sankalp-streak">0-day streak</span><span id="sankalp-days">0 steps done</span></div><button class="button button-ghost sankalp-tick" id="sankalp-tick" type="button" hidden>✓ I did today’s small step</button></div></section></main>
+  <script src="profile.js"></script>
+  <script src="sankalp.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.128.0/three.min.js"></script>
+  <script src="fx3d.js"></script>
+  <script src="cursor.js"></script>
+  <script src="motion.js"></script>
+</body>
+</html>

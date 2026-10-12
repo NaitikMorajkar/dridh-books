@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dridh Books saved reading list.">
+  <title>Dridh Books | Saved books</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=pointer3d2">
+  <link rel="stylesheet" href="motion.css">
+  <script>try{if(localStorage.getItem('dridhLiteMode')!=='true'&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('m-on');if(sessionStorage.getItem('dridhIntro'))document.documentElement.classList.add('m-fast')}}catch(e){}</script>
+</head>
+<body class="nav-page-body">
+  <header class="app-header"><a aria-label='Dridh Books home' class='brand-link' href='/chat?v=final2'><span class="brand-wordmark">DRIDH <b>BOOKS</b></span><span class="voice-badge">SAVED BOOKS</span><small>One minute. One story. One step stronger.</small></a><nav class="top-nav" aria-label="Main navigation"><a href='/chat?v=final2'>Assistant</a><a href='/chat?v=final2#books-section'>Books</a><a href='/sankalp'>Sankalp</a><a class='active' href='/saved'>Saved books</a></nav><div class="header-actions"><span class="profile-chip" id="profile-badge">Guest mode</span><a class='text-button nav-action-link' href='/chat?v=final2'>Back to Assistant</a></div></header>
+  <nav class="mobile-nav" aria-label="Mobile navigation"><a href='/chat?v=final2'>Assistant</a><a href='/chat?v=final2#books-section'>Books</a><a href='/sankalp'>Sankalp</a><a class='active' href='/saved'>Saved books</a></nav>
+  <main class="nav-page"><div class="nebula nebula-left" aria-hidden="true"></div><div class="nebula nebula-right" aria-hidden="true"></div><section class="nav-page-card" aria-labelledby="saved-title"><span class="section-kicker">YOUR READING LIST</span><h1 id="saved-title">Saved books</h1><p id="saved-copy">Books you save from the shelf appear here. The list stays in this browser on this device.</p><div id="saved-list" class="saved-grid"></div><div class="saved-empty" id="saved-empty" role="status" hidden><span aria-hidden="true">✦</span><strong>Your shelf is ready for its first small spark.</strong><a class='button button-primary nav-cta' href='/chat#books-section'>Browse books →</a></div></section></main>
+  <script src="profile.js"></script>
+  <script src="saved.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.128.0/three.min.js"></script>
+  <script src="fx3d.js"></script>
+  <script src="cursor.js"></script>
+  <script src="motion.js"></script>
+</body>
+</html>
