@@ -30,3 +30,4 @@ npx serve public
 | Saved books | `public/saved.html` |
 
 The **✨ Effects** switch (bottom corner) turns all 3D and motion off; motion is also skipped for visitors who prefer reduced motion.
+Deploy Link-https://dridh-books.netlify.app/
